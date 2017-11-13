@@ -1,3 +1,4 @@
+Tested with Python 2.7.3 and Tensorflow 1.1
 ## What does it do exactly?
 It trains a global attentional NMT model based on [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/abs/1508.04025) using beam search with length normalization by [Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation](https://arxiv.org/abs/1609.08144).  
 
