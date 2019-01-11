@@ -143,11 +143,15 @@ class Model(object):
             
             # Option to fix some variables
             fixed_vars = config['fixed_var_list'] if config['fixed_var_list'] else []
-            fixed_vars = operator.attrgetter(*fixed_vars)(self)
-            if isinstance(fixed_vars, list):
-                fixed_var_names = [_fixed_var.name for _fixed_var in fixed_vars]
+
+            if fixed_vars:
+                fixed_vars = operator.attrgetter(*fixed_vars)(self)
+                if isinstance(fixed_vars, list):
+                    fixed_var_names = [_fixed_var.name for _fixed_var in fixed_vars]
+                else:
+                    fixed_var_names = [fixed_vars.name]
             else:
-                fixed_var_names = [fixed_vars.name]
+                fixed_var_names = []
                 
             tvars = tf.trainable_variables()
             tvars = [_var for _var in tvars if _var.name not in fixed_var_names]
